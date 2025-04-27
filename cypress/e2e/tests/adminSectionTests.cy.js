@@ -1,7 +1,7 @@
 import LoginPage from "../actions/loginPage"
 import AdminPage from "../actions/adminPage"
 import UsersToAdd from "../users/newUsers"
-// import NewUsersOnTable from "../users/newUsersOnTable"
+import NewUsersOnTable from "../users/newUsersOnTable"
 describe('Tests Admin section functionalities', () => {
     const loginPage = new LoginPage()
     const adminPage = new AdminPage()
@@ -31,12 +31,12 @@ describe('Tests Admin section functionalities', () => {
       adminPage.assertSuccessMessage()
   })
   it('Test add multiple users', () => { 
-      UsersToAdd.forEach(({ username, password }) => {
+    UsersToAdd.forEach(({ username, password }) => {
       adminPage.clickAddButton()
       adminPage.addUsers(username, password)
     })
-      // adminPage.validateUsersExist(NewUsersOnTable.at(0))
-
+    NewUsersOnTable.forEach(({username}) => {
+      adminPage.validateUsersExist(username)
+    })
   })
-
 })        

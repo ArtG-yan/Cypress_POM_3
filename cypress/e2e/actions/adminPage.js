@@ -4,7 +4,7 @@ class AdminPage {
         cy.get(locators.barButton).contains(constants.barButtonName).click()
     }
     typeUsername() {
-        cy.contains(locators.fieldTitle1, constants.fieldName1).parentsUntil(locators.ancestor1).find(locators.searchFieldInput).type(constants.userName)
+        cy.contains(locators.fieldTitle1, constants.fieldName1).parentsUntil(locators.ancestor1).find(locators.fieldInput).type(constants.userName)
         cy.wait(1000)
     }
     clickSearchButton() {
@@ -18,8 +18,8 @@ class AdminPage {
         cy.get(locators.yesCheckbox).click()
     }
     changePassword() {
-        cy.contains(locators.fieldTitle1, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.newPasswordField).type(constants.newPassword)
-        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.newPasswordField).type(constants.newPassword)
+        cy.contains(locators.fieldTitle2, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.fieldInput).type(constants.newPassword)
+        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.fieldInput).type(constants.newPassword)
     }
     clickSaveButton() {
         cy.get(locators.saveButton).click()
@@ -46,8 +46,8 @@ class AdminPage {
         cy.contains(locators.fieldTitle2, constants.fieldName1).parentsUntil(locators.ancestor1).find(locators.usernameField).type(constants.newUsername)
     }
     typePassword() {
-        cy.contains(locators.fieldTitle1, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.newPasswordField).type(constants.password)
-        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.newPasswordField).type(constants.password)
+        cy.contains(locators.fieldTitle1, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.fieldInput).type(constants.password)
+        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.fieldInput).type(constants.password)
     }
     assertSuccessMessage() {
         cy.get(locators.successMessage).should('exist').and('be.visible')
@@ -60,13 +60,14 @@ class AdminPage {
         cy.get(locators.employeeNameFIeld).type('a').parents(locators.parent).find(locators.autocomplateFieldParent).click()
         cy.get(locators.optionListParent).children().eq(1).click()
         cy.contains(locators.fieldTitle2, constants.fieldName1).parentsUntil(locators.ancestor1).find(locators.usernameField).type(username)
-        cy.contains(locators.fieldTitle1, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.newPasswordField).type(password)
-        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.newPasswordField).type(password)
+        cy.contains(locators.fieldTitle1, constants.fieldName2).parentsUntil(locators.ancestor2).find(locators.fieldInput).type(password)
+        cy.contains(locators.fieldTitle1, constants.fieldName3).parentsUntil(locators.ancestor1).find(locators.fieldInput).type(password)
         cy.get(locators.saveButton).click()
-        cy.wait(3000)
+        cy.wait(1000)
     }
-    // validateUsersExist(username) {
-// cy.contains('[role=cell]', username).closest('.oxd-table-card').contains('[role=cell]', constants.role).should('exist')
-    // }
+    validateUsersExist(username) {
+        cy.contains(locators.usernameCell, username).parentsUntil(locators.ancestor3).contains(locators.usernameCell, constants.role).should('exist').and('be.visible')
+        cy.contains(locators.usernameCell, username).parentsUntil(locators.ancestor3).contains(locators.usernameCell, constants.status).should('exist').and('be.visible')
+    }
 }
 export default AdminPage

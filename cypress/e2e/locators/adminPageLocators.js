@@ -2,13 +2,12 @@ const locators = {
     barButton: '[class$=item--name]',
     fieldTitle1: '.oxd-label',
     ancestor1: '.oxd-grid-item--gutters',
-    searchFieldInput: '.oxd-input--active',
+    fieldInput: '.oxd-input--active',
     editIcon: '.oxd-icon.bi-pencil-fill',
     searchButton: '[type=submit]',
     yesCheckbox: '[class$=oxd-checkbox-input-icon]',
-    fieldTitle2: '[class$=oxd-input-field-required]',
-    ancestor2: '[class$=user-password-cell]',
-    newPasswordField: '[class$=oxd-input--active]', 
+    fieldTitle2: '.oxd-input-field-required',
+    ancestor2: '.user-password-cell', 
     saveButton: '[type=submit]',
     successMessage: '.oxd-toast-content--success p:nth-of-type(2)',
     addButton: '[type=button].oxd-button--secondary',
@@ -19,7 +18,9 @@ const locators = {
     parent: '.oxd-input-group',
     dropdownParent: '.oxd-select-wrapper',
     autocomplateFieldParent: '.oxd-autocomplete-wrapper',
-    optionListParent: '[role=listbox]'
+    optionListParent: '[role=listbox]',
+    usernameCell: '[role="cell"] > div',
+    ancestor3: '.oxd-table-card'
 }
 const constants = {
     barButtonName:'Admin',
@@ -31,8 +32,8 @@ const constants = {
     dropdownName1: 'User Role',
     dropdownName2: 'Status',
     password: 'artur12345',
-    newUsername: 'Arthur'
-    
-
+    newUsername: 'Arthur',
+    role: 'ESS',
+    status: 'Enabled'
 }
 export {locators, constants}
